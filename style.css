@@ -536,6 +536,10 @@ body::after {
     right: 0;
     padding: 1.5rem;
     z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .service-card-title {
@@ -553,6 +557,10 @@ body::after {
     letter-spacing: 0.5px;
     position: relative;
     filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.3));
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.4;
 }
 
 .service-card-title::before {
@@ -580,6 +588,10 @@ body::after {
         0 1px 2px rgba(0, 0, 0, 0.2);
     letter-spacing: 0.3px;
     filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.25));
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
 }
 
 /* Removidos estilos específicos - todos os cards usam o mesmo estilo padrão do card 1 */
@@ -1274,19 +1286,42 @@ footer {
     }
 }
 
-/* Ajuste para Tablets e PC */
+/* ============================================
+   TABLET - 2 cards visíveis (768px+)
+   ============================================ */
 @media (min-width: 768px) {
     .services-carousel-container {
-        padding: 0 70px; /* Mais espaço lateral em telas maiores */
-    }
-    
-    .service-card {
-        flex: 0 0 32%;
-        min-width: 320px;
+        padding: 0 70px;
+        max-width: 1200px;
     }
     
     .services-carousel {
-        justify-content: center;
+        justify-content: flex-start;
+        gap: 1.2rem;
+    }
+    
+    /* 2 cards por vez: 50% menos metade do gap */
+    .service-card {
+        flex: 0 0 calc(50% - 0.6rem);
+        min-width: calc(50% - 0.6rem);
+        max-width: calc(50% - 0.6rem);
+    }
+    
+    /* Altura proporcional para tablet */
+    .service-card-image {
+        height: 340px;
+    }
+    
+    .service-card-content {
+        padding: 1.5rem;
+    }
+    
+    .service-card-title {
+        font-size: 1.4rem;
+    }
+    
+    .service-card-description {
+        font-size: 0.9rem;
     }
     
     .carousel-nav-btn {
@@ -1305,5 +1340,259 @@ footer {
     
     .carousel-nav-next {
         right: 0;
+    }
+}
+
+/* Melhorias para Desktop - A partir de 1024px */
+@media (min-width: 1024px) {
+    /* Aproximar botões da linha divisória */
+    .divider-line {
+        margin-bottom: 1.5rem; /* Reduzido de 3rem para 1.5rem */
+    }
+    
+    .contact-grid {
+        margin-top: -0.5rem; /* Reduz o espaçamento superior */
+        gap: 1.5rem; /* Reduz o gap entre elementos */
+    }
+    
+    .social-buttons-container {
+        margin-top: -1rem; /* Aproxima mais da linha */
+        margin-bottom: 0.3rem;
+    }
+    
+    .button-container {
+        margin-top: -0.5rem; /* Aproxima o botão principal */
+    }
+    
+    /* Melhor layout do hero banner */
+    .hero-banner {
+        min-height: 45vh;
+        padding: 2rem 1.5rem;
+    }
+    
+    .hero-content {
+        max-width: 700px;
+    }
+    
+    /* Logo maior no desktop */
+    .hero-content .logo-container {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-content .logo-container::after {
+        width: 270px;
+        height: 270px;
+    }
+    
+    /* Título maior */
+    .brand-title {
+        font-size: 4.5rem;
+        margin: 1.2rem 0 0.8rem 0;
+    }
+    
+    /* Tagline ajustada */
+    .tagline {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Grid de contato mais compacto - centralizado com bordas laterais */
+    .contact-grid {
+        max-width: 500px;
+        margin: 0 auto; /* Centraliza o conteúdo */
+        padding: 0 2rem;
+    }
+    
+    /* Botões sociais maiores no desktop */
+    .social-icon-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .social-icon-button .button-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Botão principal maior */
+    .main-button {
+        max-width: 360px;
+        height: 65px;
+        padding: 1.1rem 2.2rem;
+        font-size: 1.05rem;
+    }
+    
+    /* ============================================
+       DESKTOP - Carrossel com bordas laterais (1024px+)
+       ============================================ */
+    .services-carousel-section {
+        padding: 2.5rem 0;
+        width: 100%;
+    }
+    
+    .services-carousel-container {
+        max-width: 600px; /* Largura restrita para criar bordas laterais */
+        margin: 0 auto; /* Centraliza o conteúdo */
+        padding: 0 2rem;
+        width: 100%;
+    }
+    
+    .services-carousel {
+        gap: 1.5rem;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    /* Cards iguais ao mobile - 90% da largura */
+    .service-card {
+        flex: 0 0 90%;
+        min-width: 280px;
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .service-card-image {
+        height: 320px;
+        border-radius: 12px;
+        width: 100%;
+    }
+    
+    .service-card-content {
+        padding: 1.5rem 2.8rem;
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 250px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        overflow: hidden;
+    }
+    
+    .service-card-title {
+        font-size: 1.3rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.4;
+        max-width: 100%;
+        hyphens: auto;
+    }
+    
+    .service-card-description {
+        font-size: 0.85rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
+        max-width: 100%;
+        hyphens: auto;
+    }
+    
+    /* Botões de navegação maiores */
+    .carousel-nav-btn {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .carousel-nav-btn svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* ============================================
+   DESKTOP GRANDE - Accordion Horizontal (1440px+)
+   ============================================ */
+@media (min-width: 1440px) {
+    .hero-content {
+        max-width: 800px;
+    }
+    
+    .hero-content .logo-container {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .hero-content .logo-container::after {
+        width: 290px;
+        height: 290px;
+    }
+    
+    .brand-title {
+        font-size: 5rem;
+    }
+    
+    .tagline {
+        font-size: 1.3rem;
+    }
+    
+    .contact-grid {
+        max-width: 500px;
+        margin: 0 auto; /* Centraliza o conteúdo */
+    }
+    
+    .services-carousel-section {
+        padding: 3rem 0;
+        width: 100%;
+    }
+    
+    .services-carousel-container {
+        max-width: 700px; /* Largura um pouco maior em telas grandes, mas ainda restrita */
+        margin: 0 auto; /* Centraliza o conteúdo */
+        padding: 0 2.5rem;
+        width: 100%;
+    }
+    
+    .services-carousel {
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    /* Mantém comportamento de carrossel igual ao mobile */
+    .service-card {
+        flex: 0 0 90%;
+        min-width: 280px;
+        width: 90%;
+        max-width: 100%;
+    }
+    
+    .service-card-image {
+        height: 340px;
+        width: 100%;
+    }
+    
+    .service-card-content {
+        padding: 1.5rem 2.8rem;
+        width: 100%;
+        box-sizing: border-box;
+        min-width: 250px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        overflow: hidden;
+    }
+    
+    .service-card-title {
+        font-size: 1.3rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.4;
+        max-width: 100%;
+        hyphens: auto;
+    }
+    
+    .service-card-description {
+        font-size: 0.85rem;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.5;
+        max-width: 100%;
+        hyphens: auto;
     }
 }
